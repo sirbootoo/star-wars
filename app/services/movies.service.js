@@ -16,7 +16,7 @@ exports.fetchMovies = async (searchTerm = null, limit=10, page=1) => {
         responseData = responseData.map((x, i) => {
             x.identifier = String(i + 1);
             return x;
-        }).sort((a, b) => b.release_date - a.release_date);
+        }).sort((a, b) => a.release_date - b.release_date);
         let paginationObject = util.paginator(responseData, page, limit);
         let paginatedData = paginationObject.data;
         let paginatedDataLength = paginatedData.length;
