@@ -1,10 +1,14 @@
 const db = require("../models");
+const util = require("../helpers/util");
+
 const Comment = db.comments;
 const Op = db.Sequelize.Op;
 
 
 exports.createComment = async (data) => {
     try {
+
+        data.description = util.limit(data.description, 500); // limit comment to 500 characters
         // Save comment in the database
         const comment = await Comment.create(data);
         return Promise.resolve(comment);

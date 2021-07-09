@@ -1,4 +1,4 @@
-exports.paginator = (items, page, per_page, character=false) => {
+exports.paginator = (items, page, per_page, character = false) => {
     var page = page || 1,
         per_page = per_page || 10,
         offset = (page - 1) * per_page,
@@ -11,7 +11,7 @@ exports.paginator = (items, page, per_page, character=false) => {
         total_pages: total_pages,
         data: paginatedItems,
     };
-    if(character) {
+    if (character) {
         const totalHeight = items.reduce((pV, cV) => {
             return pV + Number(cV.height)
         }, 0);
@@ -27,5 +27,9 @@ exports.cmToFeetAndInches = (measurement) => {
     let inches = measurement / 2.54;
     const feet = inches / 12;
     inches = inches - (12 * 4);
-    return {feet, inches}; 
+    return { feet, inches };
+}
+
+exports.limit = (string = '', limit = 0) => {
+    return string.substring(0, limit)
 }
