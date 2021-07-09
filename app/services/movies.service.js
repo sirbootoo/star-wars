@@ -11,7 +11,6 @@ exports.fetchMovies = async (searchTerm = null, limit=10, page=1) => {
     }
     try {
         const res = await axios.get(url);
-        console.log(res, "================= \n\n")
         let responseData = res.data.results;
         responseData = responseData.map((x, i) => {
             x.identifier = String(i + 1);
